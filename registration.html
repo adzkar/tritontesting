@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TRITON Telkom University</title>
+
+  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" href="css/form.css">
+
+</head>
+<body>
+  <nav class="navbar is-black is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://bulma.io">
+        <img class="logo" src="pic/triton logo.png" alt="" srcset="">
+        <h1 class="Triton">TRITON</h1>
+      </a>
+
+
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+
+    </div>
+    <div id="nav-menu" class="navbar-menu">
+      <!-- navbar start, navbar end -->
+      <div class="navbar-start">
+        <a target="_blank" href="#" class="navbar-item ">
+          <i class="fab fa-facebook "></i>&nbsp; Facebook</a>
+        <a target="_blank" href="#" class="navbar-item ">
+          <i class="fab fa-instagram "></i>&nbsp; Instagram</a>
+        <a target="_blank" href="#" class="navbar-item ">
+          <i class="fab fa-medium "></i>&nbsp; Blog</a>
+        <a target="_blank" href="#" class="navbar-item ">
+          <i class="fa fa-at "></i>&nbsp; Contact Us</a>
+      </div>
+      <div class="navbar-end">
+        <a target="_blank" href="#" class="navbar-item has-text-info">Login</a>
+        <a target="_blank" href="#" class="navbar-item has-text-warning">Register</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="highlight columns">
+    <div class="container">
+      <div class="form">
+        <form method="post" enctype="multipart/form-data">
+        <h1>Registration Form</h1>
+
+        <div class="field">
+          <label class="label">Team Name *</label>
+          <div class="control">
+            <input class="input" name="team_name" required="" type="text" placeholder="Team Name">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Institus / University *</label>
+          <div class="control">
+            <input class="input" name="institution" type="text" placeholder="Institusi / University" required="required">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Email *</label>
+          <div class="control has-icons-left has-icons-right">
+            <input class="input" name="email" required="required" type="email" placeholder="Email">
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="fas fa-exclamation-triangle"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label control">Member's Name *</label>
+          <div class="field is-grouped">
+            <div class="control">
+              <input class="input" name="team_member_1" type="text" placeholder="Name" required="">
+            </div>
+            <div class="control">
+              <input class="input" name="team_member_2" type="text" placeholder="Name" required="">
+            </div>
+            <div class="control">
+              <input class="input" name="team_member_3" type="text" placeholder="Name" required="">
+            </div>
+            <div class="control">
+              <input class="input" name="team_member_4" type="text" placeholder="Name">
+            </div>
+          </div>
+        </div>
+          <p class="help">One Team Consist of 3-4 Peoples</p>
+        
+        <div class="field">
+          <label class="label">Upload Proof of Active Student *</label>
+          <div class="control">
+            <input class="input" type="file" name="active_student_proof" accept=".zip,.rar" placeholder="Jumlah Anggota" required="">
+          </div>
+          <p class="help is-danger">Max: 3MB</p>
+          <p class="help">Upload your proof of active Student in ZIP / RAR format</p>
+        </div>
+
+
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <input type="checkbox" required="required">
+              I have read the Hackathon Triton 2018 Rulebook
+              ( <a href="#">Click Here</a> to download )
+            </label>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <button type="reset" class="button is-text">Reset</button>
+          </div>
+          <div class="control">
+            <button type="button" class="button is-link">Submit</button>
+          </div>
+        </div>
+          
+        </form>
+
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <footer>
+    <div class="columns">
+      <div class="column">
+        <strong class="has-text-warning">Contact Person</strong>
+        <ul>
+          <li>Lorem, ipsum dolor.</li>
+          <li>Lorem, ipsum dolor.</li>
+        </ul>
+      </div>
+      <div class="column">Media Partner</div>
+      <div class="column">Sponsor</div>
+    </div>
+  </footer>
+
+  
+  <script src="js/main.min.js"></script>
+  <script src="js/responsive.js"></script>
+  <script src="js/registration.js"></script>
+
+</body>
+
+</html>
