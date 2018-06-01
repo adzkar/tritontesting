@@ -5,7 +5,8 @@ $(document).ready(() => {
 	$.ajax({
 		type: 'GET',
 		dataType: 'jsonp',
-		url: 'http://tritontelkomuniversity.dougleclass.com/api/users/',
+		crossOrigin: true,
+		url: 'https://tritontelkomuniversity.dougleclass.com/public/api/users',
 		data: data,
 		success: function(data) {
 			console.log(data);
