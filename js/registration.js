@@ -1,21 +1,32 @@
 $(document).ready(() => {
 
-	var data;
+	var data, listTeamName = [], listEmail = [], getData;
+
 	// GET Data
 	$.ajax({
 		type: 'GET',
-		dataType: 'jsonp',
+		dataType: 'json',
 		crossOrigin: true,
-		url: 'https://tritontelkomuniversity.dougleclass.com/public/api/users',
+		url: 'https://cors.io/?https://tritontelkomuniversity.dougleclass.com/public/api/users',
 		data: data,
+		async: false,
+		headers: {"Accept": "application/json"},
 		success: function(data) {
-			console.log(data);
+			getData = data;
 		},
 		error: function() {
 			console.log('failed to connect API');
 		}
 	});
 
+	// Total Data
+	var totalData = getData.data.length;
+
+	// Assign the Team Name & Email
+	for(var i = 0;i < totalData;i++) {
+    listTeamName[i] = getData.data[i]["Team Name"].toLowerCase();
+    listEmail[i] = getData.data[i]["Email"].toLowerCase();
+  }
 
 	// General Validation
 	function isValid(param) {
@@ -38,7 +49,7 @@ $(document).ready(() => {
 		$('input[name=team_name]').on('input', () => {
 			var input = $('input[name=team_name]');
 			var is_teamName = input.val();
-			if(is_teamName.length > 0 && is_teamName.length <= 50) {
+			if(is_teamName.length > 0 && is_teamName.length <= 50 && !listTeamName.includes(input.val().toLowerCase())) {
 				input.removeClass("is-danger").addClass("is-success");
 				$teamName 	   = $('input[name=team_name]');
 				status = true;
@@ -46,7 +57,7 @@ $(document).ready(() => {
 				else input.removeClass("is-success").addClass("is-danger");
 			});
 		var input = $('input[name=team_name]');
-		var is_teamName = input.val();	
+		var is_teamName = input.val();
 		return (is_teamName.length > 0) && (is_teamName.length <= 50);
 	}
 
@@ -57,7 +68,7 @@ $(document).ready(() => {
 			var input = $('input[name=email]');
 			var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 			var is_Email = re.test(input.val());
-			if(is_Email) {
+			if(is_Email && !listEmail.includes(input.val().toLowerCase())) {
 				input.removeClass("is-danger").addClass("is-success");
 				$teamName 	   = $('input[name=email]');
 				status = true;
@@ -67,6 +78,10 @@ $(document).ready(() => {
 		return status;
 	}
 
+	// Valid upload
+	function isUpload() {
+
+	}
 
 	isValidTeamName();
 	isValidEmail();
@@ -80,7 +95,7 @@ $(document).ready(() => {
 
 	$('button[type=button]').on('click', () => {
 
-		
 
-	});	
+
+	});
 });
