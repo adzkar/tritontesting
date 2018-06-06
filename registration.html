@@ -8,7 +8,6 @@
   <title>TRITON Telkom University</title>
 
   <link rel="stylesheet" href="css/style.min.css">
-  <link rel="stylesheet" href="css/form.css">
 
 </head>
 <body>
@@ -98,9 +97,12 @@
           </div>
         </div>
           <p class="help">One Team Consist of 3-4 Peoples</p>
-        
+
         <div class="field">
-          <label class="label">Upload Proof of Active Student *</label>
+          <label class="label">
+            Upload Proof of Active Student *
+            <span class="danger" id="warn"></span>
+          </label>
           <div class="control">
             <input class="input" type="file" name="active_student_proof" accept=".zip,.rar" placeholder="Jumlah Anggota" required="">
           </div>
@@ -112,9 +114,10 @@
         <div class="field">
           <div class="control">
             <label class="checkbox">
-              <input type="checkbox" required="required">
+              <input type="checkbox" required="required" name="agree">
               I have read the Hackathon Triton 2018 Rulebook
               ( <a href="#">Click Here</a> to download )
+              <br><span class="danger" id="warnAgree"></span>
             </label>
           </div>
         </div>
@@ -124,10 +127,10 @@
             <button type="reset" class="button is-text">Reset</button>
           </div>
           <div class="control">
-            <button type="button" class="button is-link">Submit</button>
+            <button type="button" class="button is-link" id="registrationButton">Submit</button>
           </div>
         </div>
-          
+
         </form>
 
       </div>
@@ -151,7 +154,7 @@
     </div>
   </footer>
 
-  
+
   <script src="js/main.min.js"></script>
   <script src="js/responsive.js"></script>
   <script src="js/registration.js"></script>

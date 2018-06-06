@@ -66,7 +66,8 @@ $(document).ready(() => {
 		var status = false;
 		$('input[name=email]').on('input', () => {
 			var input = $('input[name=email]');
-			var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+			// var re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+			var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 			var is_Email = re.test(input.val());
 			if(is_Email && !listEmail.includes(input.val().toLowerCase())) {
 				input.removeClass("is-danger").addClass("is-success");
@@ -80,7 +81,26 @@ $(document).ready(() => {
 
 	// Valid upload
 	function isUpload() {
-
+		var input = $('input[name=active_student_proof]');
+		input.on('change', () => {
+			var studentProof = $('input[name=active_student_proof]')[0].files[0];
+			var fileName = studentProof.name;
+			var fileSize = studentProof.size;
+			// extension validation
+			var fileExtension = /\.(zip|rar)$/i;
+			if(!fileExtension.test(fileName) || fileSize > 307200) {
+				var error = "";
+				if(!fileExtension.test(fileName)) error += " | Your File Extension isn't ZIP / RAR \n";
+				if(fileSize > 307200) error += " | Your File Size is bigger than 3MB";
+				input.removeClass("is-success").addClass("is-danger");
+				$('#warn').html(error);
+			}
+			else {
+				$('#warn').html("");
+				input.removeClass("is-danger").addClass("is-success");
+			}
+			return !fileExtension.test(fileName) || fileSize > 307200;
+		});
 	}
 
 	isValidTeamName();
@@ -89,12 +109,59 @@ $(document).ready(() => {
 	isValid('team_member_1');
 	isValid('team_member_2');
 	isValid('team_member_3');
-	isValid('team_member_4');
+	isUpload();
+
+	var team_member_4 = $('input[name=team_member_4]');
+	if(team_member_4.val().length != 0) isValid('team_member_4');
 
 
+	$('button#registrationButton').on('click', () => {
 
-	$('button[type=button]').on('click', () => {
+		if($('input[name=agree]')[0].checked) {
 
+			$('#warnAgree').html('');
+
+			var team_name = $('input[name=team_name]');
+			var institution = $('input[name=institution]');
+			var email = $('input[name=email]');
+			var team_member_1 = $('input[name=team_member_1]');
+			var team_member_2 = $('input[name=team_member_2]');
+			var team_member_3 = $('input[name=team_member_3]');
+			var studentProof = $('input[name=active_student_proof]')[0].files[0];
+
+			// validating for team_member_4 beacause it nullable
+			var team_member_4 = $('input[name=team_member_4]');
+			team_member_4 = team_member_4.val();
+			if(team_member_4.length == 0) team_member_4 = null;
+
+			var data = new FormData();
+			data.append('team_name', team_name.val());
+			data.append('email', email.val());
+			data.append('institution', institution.val());
+			data.append('team_member_1', team_member_1.val());
+			data.append('team_member_2', team_member_2.val());
+			data.append('team_member_3', team_member_3.val());
+			data.append('team_member_4', team_member_4);
+			data.append('active_student_proof', studentProof);
+
+			$.ajax({
+				type: 'POST',
+				crossOrigin: true,
+				url: 'https://tritontelkomuniversity.dougleclass.com/api/auth/register',
+				data: data,
+				processData: false,
+				headers: {"Accept": "application/json"},
+				success: function() {
+					console.log('Success');
+				},
+				error: function() {
+					console.log('Failed to send data');
+				}
+			});
+
+		} else {
+			$('#warnAgree').html('Please Check This');
+		}
 
 
 	});
