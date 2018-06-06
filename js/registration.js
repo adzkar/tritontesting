@@ -147,7 +147,7 @@ $(document).ready(() => {
 			$.ajax({
 				type: 'POST',
 				crossOrigin: true,
-				url: 'https://tritontelkomuniversity.dougleclass.com/api/auth/register',
+				url: 'https://cors.io/?https://tritontelkomuniversity.dougleclass.com/api/auth/register',
 				data: data,
 				processData: false,
 				headers: {"Accept": "application/json"},
