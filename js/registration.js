@@ -7,7 +7,7 @@ $(document).ready(() => {
 		type: 'GET',
 		dataType: 'json',
 		crossOrigin: true,
-		url: 'https://cors.io/?https://tritontelkomuniversity.dougleclass.com/public/api/users',
+		url: '/api/users',
 		data: data,
 		async: false,
 		headers: {"Accept": "application/json"},
@@ -112,7 +112,7 @@ $(document).ready(() => {
 	isUpload();
 
 	var team_member_4 = $('input[name=team_member_4]');
-	if(team_member_4.val().length != 0) isValid('team_member_4');
+	if(team_member_4.val().length !== 0) isValid('team_member_4');
 
 
 	$('button#registrationButton').on('click', () => {
@@ -132,7 +132,7 @@ $(document).ready(() => {
 			// validating for team_member_4 beacause it nullable
 			var team_member_4 = $('input[name=team_member_4]');
 			team_member_4 = team_member_4.val();
-			if(team_member_4.length == 0) team_member_4 = null;
+			if(team_member_4.length === 0) team_member_4 = null;
 
 			var data = new FormData();
 			data.append('team_name', team_name.val());
@@ -144,20 +144,15 @@ $(document).ready(() => {
 			data.append('team_member_4', team_member_4);
 			data.append('active_student_proof', studentProof);
 
-			$.ajax({
-				type: 'POST',
-				crossOrigin: true,
-				url: 'https://cors.io/?https://tritontelkomuniversity.dougleclass.com/api/auth/register',
-				data: data,
-				processData: false,
-				headers: {"Accept": "application/json"},
-				success: function() {
-					console.log('Success');
-				},
-				error: function() {
-					console.log('Failed to send data');
-				}
-			});
+			// Axios Post
+      axios.post('/api/auth/register', data, {
+			headers: {
+        			  'Content-Type': 'multipart/form-data',
+        			  'Accept': 'Application/json'
+        	    }})
+                .then((res) => console.log(res))
+                .catch((err) => console.log(err));
+
 
 		} else {
 			$('#warnAgree').html('Please Check This');
