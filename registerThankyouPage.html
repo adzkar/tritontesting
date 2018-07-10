@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TRITON Telkom University</title>
+
+  <!--build:css css/style.min.css -->
+  <link rel="stylesheet" href="../bower_components/font-awesome/web-fonts-with-css/css/fontawesome.min.css">
+  <link rel="stylesheet" href="../bower_components/font-awesome/web-fonts-with-css/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="../bower_components/bulma/css/bulma.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- endbuild -->
+
+</head>
+<body>
+  <nav class="navbar is-black is-fixed-top" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="index.html">
+        <img class="logo" src="pic/triton logo.png" alt="" srcset="">
+        <h1 class="Triton">TRITON</h1>
+      </a>
+
+
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+
+    </div>
+    <div id="nav-menu" class="navbar-menu">
+      <!-- navbar start, navbar end -->
+      <div class="navbar-start">
+        <a target="_blank" href="#" class="navbar-item ">
+          <i class="fab fa-facebook "></i>&nbsp; Facebook</a>
+        <a target="_blank" href="#" class="navbar-item ">
+          <i class="fab fa-instagram "></i>&nbsp; Instagram</a>
+        <a target="_blank" href="#" class="navbar-item ">
+          <i class="fab fa-medium "></i>&nbsp; Blog</a>
+        <a target="_blank" href="#" class="navbar-item ">
+          <i class="fa fa-at "></i>&nbsp; Contact Us</a>
+      </div>
+      <div class="navbar-end">
+        <a target="_blank" href="#" class="navbar-item has-text-info">Login</a>
+        <a target="_blank" href="#" class="navbar-item has-text-warning">Register</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="highlight columns">
+    <div class="container">
+      <div class="form">
+        <h1>Thank you for Register</h1>
+        <p>
+          Kami akan segera mengirimkan email mengenai pembayaran setelah memverifikasi bukti mahasiswa aktif anda.
+        </p>
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <footer>
+    <div class="columns">
+      <div class="column">
+        <strong class="has-text-warning">Contact Person</strong>
+        <ul>
+          <li>Lorem, ipsum dolor.</li>
+          <li>Lorem, ipsum dolor.</li>
+        </ul>
+      </div>
+      <div class="column">Media Partner</div>
+      <div class="column">Sponsor</div>
+    </div>
+  </footer>
+
+  <script>
+
+    $().ready(() => {
+      if ($(window).width() <= 1024) {
+        $('#hidden-desc').addClass('hidden')
+        $('.bg3').addClass('hidden');
+        $('.timeline').addClass('hidden');
+        $('.timel').addClass('hidden');
+      }
+    })
+
+    $(window).resize(() => {
+      if ($(window).width() > 1024) {
+        console.log('big')
+        $('.navbar-item').removeClass('has-text-black');
+        $('.fab').removeClass('has-text-black');
+        $('.fa').removeClass('has-text-black');
+        $('#hidden-desc').removeClass('hidden');
+        $('.bg3').removeClass('hidden');
+        $('.timeline').removeClass('hidden');
+        $('.timel').removeClass('hidden');
+      } else {
+        if ($('.navbar-burger').hasClass('is-active')) {
+          $('.navbar-item').toggleClass('has-text-black');
+          $('.fab').toggleClass('has-text-black');
+          $('.fa').toggleClass('has-text-black');
+        }
+        $('#hidden-desc').addClass('hidden');
+        $('.bg3').addClass('hidden');
+        $('.timeline').addClass('hidden');
+        $('.timel').addClass('hidden');
+
+      }
+    })
+
+    $('.navbar-burger').click(() => {
+      console.log('small')
+      $('.navbar-item').toggleClass('has-text-black');
+      $('.fab').toggleClass('has-text-black');
+      $('.fa').toggleClass('has-text-black');
+      $('#nav-menu').toggleClass('is-active');
+      $('.navbar-burger').toggleClass('is-active');
+
+
+    });
+
+  </script>
+  <!--build:js js/main.min.js -->
+    <script src="../bower_components/jquery/dist/jquery.js" defer></script>
+  <!-- endbuild -->
+
+</body>
+
+</html>

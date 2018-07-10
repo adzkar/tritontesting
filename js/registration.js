@@ -167,11 +167,14 @@ $(document).ready(() => {
 									'Accept': 'Application/json'
 								}})
 									.then((res) => console.log(res))
+									.then(() => {
+										window.location.replace('http://tritontelkom.id/thankyou')
+									})
 									.catch((err) => console.log(err));
 
 
 			} else {
-				// jika tidak true
+				// Failed
 				isValidTeamName();
 				isValidEmail();
 				isValid('institution');
