@@ -52,9 +52,12 @@ $(document).ready(() => {
 			if(is_teamName.length > 0 && is_teamName.length <= 50 && !listTeamName.includes(input.val().toLowerCase())) {
 				input.removeClass("is-danger").addClass("is-success");
 				$teamName 	   = $('input[name=team_name]');
-				status = true;
+				$('#teamNameWarn').html('');
 			}
-				else input.removeClass("is-success").addClass("is-danger");
+				else {
+					input.removeClass("is-success").addClass("is-danger");
+					$('#teamNameWarn').html('The team name has been already taken');
+				}
 			});
 		var input = $('input[name=team_name]'),
 				is_teamName = input.val();
@@ -71,9 +74,13 @@ $(document).ready(() => {
 			if(is_Email && !listEmail.includes(input.val().toLowerCase())) {
 				input.removeClass("is-danger").addClass("is-success");
 				$teamName 	   = $('input[name=email]');
+				$('#emailWarn').html('');
 				status = true;
 			}
-				else input.removeClass("is-success").addClass("is-danger");
+				else {
+					input.removeClass("is-success").addClass("is-danger");
+					$('#emailWarn').html('The email has been already taken');
+				}
 			});
 		return status;
 	}
