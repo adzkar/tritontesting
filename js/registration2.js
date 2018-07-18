@@ -56,7 +56,9 @@ $().ready(() => {
 
 const isAvailable = async (param1, data) => {
   let valid = (param1 === 'team') ? 'isTeamNameAvailable' : ('email') ? 'isEmailAvailable' : 'wrong parameter',
-      url = 'https://tritontelkom.id/api/'+valid+'/'+data;
+      url = 'https://tritontelkom.id/api/'+valid+'/'
+  url += (data.length > 0) ? data:'asw'
+  console.log(url);
   return await fetch(url)
 }
 
@@ -79,16 +81,20 @@ const isValidTeamName = () => {
         res => {
           (
             input.val().length > 0 &&
-            input.val().length <= 50 &&
-            res.data.Availibility
+            input.val().length <= 50
           )
-            ? (
-              input.removeClass("is-danger").addClass("is-success"),
-              $('#teamNameWarn').html('')
-            )
+            ? (res.data.Availibility)
+                ? (
+                  input.removeClass("is-danger").addClass("is-success"),
+                  $('#teamNameWarn').html('')
+                )
+                : (
+                  input.removeClass("is-success").addClass("is-danger"),
+                  $('#teamNameWarn').html('This team name has been already taken')
+                )
             : (
               input.removeClass("is-success").addClass("is-danger"),
-              $('#teamNameWarn').html('This team name has been already taken')
+              $('#teamNameWarn').html('')
             )
         }
       )
@@ -117,10 +123,12 @@ const isValidEmail = () => {
                   input.removeClass("is-success").addClass("is-danger"),
                   $('#emailWarn').html('This email has been already taken')
                 )
-           : input.removeClass("is-success").addClass("is-danger")
+           : (
+             input.removeClass("is-success").addClass("is-danger"),
+             $('#emailWarn').html('')
+           )
         }
-      )			return (fileExtension.test(fileName) && fileSize < 307200);
-
+      )
       .catch(err => alert('Error\n Please Contact hi@tritontelkom.id'))
   })
 }
