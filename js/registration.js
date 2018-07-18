@@ -1,4 +1,4 @@
-$(document).ready(() => {
+$().ready(() => {
 
 	var data, listTeamName = [], listEmail = [], getData;
 
@@ -56,7 +56,7 @@ $(document).ready(() => {
 			}
 				else {
 					input.removeClass("is-success").addClass("is-danger");
-					$('#teamNameWarn').html('The team name has been already taken');
+					$('#teamNameWarn').html('This team name has been already taken');
 				}
 			});
 		var input = $('input[name=team_name]'),
@@ -79,7 +79,7 @@ $(document).ready(() => {
 			}
 				else {
 					input.removeClass("is-success").addClass("is-danger");
-					$('#emailWarn').html('The email has been already taken');
+					$('#emailWarn').html('This email has been already taken');
 				}
 			});
 		return status;
@@ -123,7 +123,6 @@ $(document).ready(() => {
 
 	isValidTeamName();
 	isValidEmail();
-	isValid('institution');
 	isValid('team_member_1');
 	isValid('team_member_2');
 	isValid('team_member_3');
@@ -139,13 +138,12 @@ $(document).ready(() => {
 		if($('input[name=agree]')[0].checked) {
 
 			// cek length form input jika true baru diinput
-			if(len('input[name=team_name]') && len('input[name=institution]') && len('input[name=email]') && len('input[name=team_member_1]') && len('input[name=team_member_2]') && len('input[name=team_member_3]') && isUploadTrue()) {
+			if(len('input[name=team_name]') && len('input[name=email]') && len('input[name=team_member_1]') && len('input[name=team_member_2]') && len('input[name=team_member_3]') && isUploadTrue()) {
 
 
 				$('#warnAgree').html('');
 
 				var team_name = $('input[name=team_name]');
-				var institution = $('input[name=institution]');
 				var email = $('input[name=email]');
 				var team_member_1 = $('input[name=team_member_1]');
 				var team_member_2 = $('input[name=team_member_2]');
@@ -160,7 +158,6 @@ $(document).ready(() => {
 				var data = new FormData();
 				data.append('team_name', team_name.val());
 				data.append('email', email.val());
-				data.append('institution', institution.val());
 				data.append('team_member_1', team_member_1.val());
 				data.append('team_member_2', team_member_2.val());
 				data.append('team_member_3', team_member_3.val());
