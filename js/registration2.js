@@ -28,15 +28,18 @@ $().ready(() => {
               team_member_1 = $('input[name=team_member_1]'),
               team_member_2 = $('input[name=team_member_2]'),
               team_member_3 = $('input[name=team_member_3]'),
-              studentProof = $('input[name=active_student_proof]')[0].files[0],
-              team_member_4 = ($('input[name=team_member_4]').length === 0) ? null : $('input[name=team_member_4]').val()
+              studentProof = $('input[name=active_student_proof]')[0].files[0]
+        // validating for team_member_4 beacause it nullable
+        var team_member_4 = $('input[name=team_member_4]');
+        team_member_4 = team_member_4.val();
+        if(team_member_4.length === 0) team_member_4 = null;
         const data = new FormData()
         data.append('team_name', team_name.val())
         data.append('email', email.val())
         data.append('team_member_1', team_member_1.val())
         data.append('team_member_2', team_member_2.val())
         data.append('team_member_3', team_member_3.val())
-        data.append('team_member_4', team_member_4.val())
+        data.append('team_member_4', team_member_4)
         data.append('active_student_proof', studentProof)
         // axios post
         axios.post('https://tritontelkom.id/api/auth/register', data, {
@@ -58,7 +61,6 @@ const isAvailable = async (param1, data) => {
   let valid = (param1 === 'team') ? 'isTeamNameAvailable' : ('email') ? 'isEmailAvailable' : 'wrong parameter',
       url = 'https://tritontelkom.id/api/'+valid+'/'
   url += (data.length > 0) ? data:'asw'
-  console.log(url);
   return await fetch(url)
 }
 
